@@ -8,6 +8,5 @@ Add the following entry to your Github workflow YAML file:
 ```
 steps:
   - name: XDTesting Setup Environment
-    uses: FiorelaCiroku/XDTesting-Setup-Environment@v1.0.0
-  
+    uses: FiorelaCiroku/XDTesting-SetupEnvironment@v1.0.0
 ```
