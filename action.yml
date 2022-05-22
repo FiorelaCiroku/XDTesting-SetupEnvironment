@@ -1,5 +1,5 @@
 # The name of the action
-name: XDTesting Setup Environment
+name: XDTesting Environment Setup
  
 # The decription of the action
 description: This is an action that is able to set up the environment for unit testing in eXtreme Design ontology modelling methodology.
