@@ -1,0 +1,38 @@
+# The name of the action
+name: XDTesting Setup Environment
+ 
+# The decription of the action
+description: This is an action that is able to set up the environment for unit testing in eXtreme Design ontology modelling methodology.
+
+# Action icon and color
+branding:
+  icon: 'box'  
+  color: 'blue'
+
+runs:
+  using: "composite"
+  # Steps that are executed for this job
+  steps:
+
+  # Sets up java 
+    - name: Set up java
+      uses: actions/setup-java@v3.3.0
+      with:
+        distribution: 'temurin' # See 'Supported distributions' for available options
+        java-version: '17'
+
+  # Downloads the latest version of OWLUnit jar from the GitHub repository       
+    - name: Setup-OWLUnit
+      shell: bash
+      run: |
+         curl -s https://api.github.com/repos/luigi-asprino/owl-unit/releases/latest \
+         | grep browser_download_url \
+         | cut -d : -f 2,3 \
+         | tr -d \" \
+         | wget -qi -
+         echo "OWLUnit jar has been successfully downloaded!"
+
+  # Install OWLUnit jar
+    - name: Install-OWLUnit
+      run: java -jar OWLUnit-0.3.2.jar
+      shell: bash
